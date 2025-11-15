@@ -1,0 +1,22 @@
+# Core LangChain dependencies
+langchain>=0.1.0
+langchain-anthropic>=0.1.0
+langgraph>=0.0.20
+
+# NHL API library
+nhl-api-py>=0.3.0
+
+# HTTP requests (may still be useful for other things)
+requests>=2.31.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# CLI framework (optional but recommended)
+typer>=0.9.0
+
+# Data validation (optional but recommended)
+pydantic>=2.0.0
+
+# Pretty terminal output (optional)
+rich>=13.0.0
