@@ -38,18 +38,19 @@ class NHLDataClient:
             roster = self.client.teams.team_roster(team_abbr = teamAbbv, season = givenYear)
             fullRoster = roster['forwards'] + roster['defensemen'] + roster['goalies']
         
-        for player in roster:
-            rosterFirstName = player.get('firstName', {}.get('default', '')).lower()
-            rosterLastName = player.get('lastName', {}.get('default', '')).lower()
+        for player in fullRoster:
+            rosterFirstName = player.get('firstName', {}).get('default', '').lower()
+            rosterLastName = player.get('lastName', {}).get('default', '').lower()
 
             #Check if names match
-            if rosterFirstName == playerFirstName.strip().lower() and rosterLastName.strip().lower() == playerLastName:
+            if rosterFirstName == playerFirstName.strip().lower() and rosterLastName == playerLastName.strip().lower():
                 return player.get('id')
         ##Return if not found
         return None
 
     def get_player_stats(self, player_id: int) -> dict:
-        pass
+        career_stats = self.client.stats.player_career_stats(player_id = player_id)
+        return career_stats
 
     def get_advanced_stats(self, player_id: int, season: str= None) -> dict:
         pass
